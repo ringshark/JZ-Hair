@@ -32,342 +32,206 @@
     }
   </script>
 </head>
-<body class="bg-brand-50 text-brand-900 font-sans antialiased min-h-screen">
+<body class="bg-brand-50 text-brand-900 font-sans antialiased min-h-screen flex flex-col justify-between">
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-brand-100">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-100">
     <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
       <div>
         <h1 class="font-serif text-2xl font-bold tracking-tight text-brand-900">Janelle Zander</h1>
         <p class="text-xs text-brand-600 font-medium tracking-widest uppercase">@jzhairstudio • All Smoke and Mirrors</p>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
         <a href="mailto:jzhairbooking@gmail.com" 
            class="text-xs md:text-sm font-medium text-brand-700 hover:text-brand-900 underline underline-offset-4 hidden sm:inline">
           jzhairbooking@gmail.com
         </a>
-        <button onclick="document.getElementById('booking-section').scrollIntoView({behavior: 'smooth'})"
-                class="bg-brand-900 text-white text-xs md:text-sm font-medium px-4 py-2 rounded-full hover:bg-brand-700 transition">
-          Book Appointment
-        </button>
+        <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+           class="bg-brand-900 hover:bg-brand-700 text-white text-xs md:text-sm font-semibold px-5 py-2.5 rounded-full transition shadow-sm">
+          Book on Square
+        </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="max-w-6xl mx-auto px-4 pt-12 pb-8">
+  <section class="max-w-6xl mx-auto px-4 pt-10 pb-6 w-full">
     <div class="bg-brand-100 rounded-3xl p-8 md:p-12 border border-brand-200 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-4 max-w-xl">
         <span class="inline-block px-3 py-1 bg-white text-brand-700 rounded-full text-xs font-semibold uppercase tracking-wider">
-          South Jersey Hair Specialist
+          South Jersey Hair Stylist
         </span>
         <h2 class="font-serif text-3xl md:text-5xl font-bold leading-tight">
           Life’s too short for flat hair.
         </h2>
         <p class="text-brand-700 text-sm md:text-base leading-relaxed">
-          Specializing in signature dimensional color, full balayage, keratin smoothing, and long-lasting blowout styling. Book your session below with automatic Google Calendar reminders.
+          Specializing in signature dimensional color, custom balayage, keratin smoothing, and long-lasting blowout styling. Book appointments directly through our Square portal below.
         </p>
-        <div class="pt-2 flex flex-wrap gap-3">
-          <span class="text-xs bg-white/70 px-3 py-1.5 rounded-lg border border-brand-200">✨ Blowouts: $40</span>
-          <span class="text-xs bg-white/70 px-3 py-1.5 rounded-lg border border-brand-200">✂️️ Women's Cuts: $55</span>
-          <span class="text-xs bg-white/70 px-3 py-1.5 rounded-lg border border-brand-200">🎨 Balayage: $175+</span>
+        <div class="pt-1 flex flex-wrap gap-2 text-xs">
+          <span class="bg-white/80 px-3 py-1.5 rounded-lg border border-brand-200 font-medium">✨ Blowouts: $40</span>
+          <span class="bg-white/80 px-3 py-1.5 rounded-lg border border-brand-200 font-medium">✂️ Women's Cuts: $55</span>
+          <span class="bg-white/80 px-3 py-1.5 rounded-lg border border-brand-200 font-medium">🎨 Balayage: $175+</span>
         </div>
       </div>
+      
+      <!-- Spotlight Card -->
       <div class="w-full md:w-80 bg-white p-6 rounded-2xl shadow-sm border border-brand-200 text-center">
-        <p class="text-xs uppercase tracking-widest text-brand-600 font-semibold mb-1">Most Requested</p>
-        <h3 class="font-serif text-2xl font-bold mb-2">Signature Blowout</h3>
-        <p class="text-3xl font-bold text-brand-900 mb-3">$40</p>
+        <p class="text-xs uppercase tracking-widest text-brand-600 font-semibold mb-1">Signature Specialty</p>
+        <h3 class="font-serif text-2xl font-bold mb-1">The Blowout</h3>
+        <p class="text-3xl font-bold text-brand-900 mb-2">$40</p>
         <p class="text-xs text-brand-700 mb-4">Shampoo, scalp massage, and custom round-brush volume styling.</p>
-        <button onclick="selectServiceDirect('Blowout', 40, 45)" 
-                class="w-full py-2.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-semibold transition">
-          Select Blowout
-        </button>
+        <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+           class="block w-full py-3 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-semibold transition shadow-sm">
+          Book This Service
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Booking Flow Section -->
-  <main id="booking-section" class="max-w-6xl mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      
-      <!-- Step 1: Select Service -->
-      <div class="lg:col-span-2 space-y-6">
-        <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-sm">
-          <h3 class="font-serif text-xl font-bold mb-1">1. Choose Your Service</h3>
-          <p class="text-xs text-brand-600 mb-6">Select a styling or coloring service to view availability.</p>
-
-          <div class="space-y-3" id="service-list">
-            <!-- Services injected via JS -->
-          </div>
-        </div>
-
-        <!-- Step 2: Date & Time -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-sm">
-          <h3 class="font-serif text-xl font-bold mb-1">2. Select Date & Time</h3>
-          <p class="text-xs text-brand-600 mb-4">Pick an available day and start time.</p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Preferred Date</label>
-              <input type="date" id="booking-date" onchange="renderSlots()" 
-                     class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-brand-600 mb-2">Available Time Slot</label>
-              <select id="time-slot" class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500">
-                <option value="">Select a date first</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: Contact Info -->
-        <div class="bg-white p-6 rounded-2xl border border-brand-100 shadow-sm">
-          <h3 class="font-serif text-xl font-bold mb-1">3. Client Information</h3>
-          <p class="text-xs text-brand-600 mb-4">No upfront payment required. We will confirm via text or email.</p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-medium text-brand-700 mb-1">Full Name</label>
-              <input type="text" id="client-name" placeholder="First & Last Name"
-                     class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500" />
-            </div>
-            <div>
-              <label class="block text-xs font-medium text-brand-700 mb-1">Phone Number</label>
-              <input type="tel" id="client-phone" placeholder="(856) 000-0000"
-                     class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500" />
-            </div>
-            <div class="sm:col-span-2">
-              <label class="block text-xs font-medium text-brand-700 mb-1">Email Address</label>
-              <input type="email" id="client-email" placeholder="you@example.com"
-                     class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500" />
-            </div>
-            <div class="sm:col-span-2">
-              <label class="block text-xs font-medium text-brand-700 mb-1">Appointment Notes (Hair length, goals, etc.)</label>
-              <textarea id="client-notes" rows="2" placeholder="Optional details..."
-                        class="w-full px-4 py-2 rounded-xl border border-brand-200 text-sm focus:outline-none focus:border-brand-500"></textarea>
-            </div>
-          </div>
-        </div>
+  <!-- Service Menu & Booking Flow -->
+  <main class="max-w-6xl mx-auto px-4 py-8 w-full">
+    <div class="flex items-center justify-between mb-6 border-b border-brand-200 pb-4">
+      <div>
+        <h3 class="font-serif text-2xl font-bold">Services & Pricing</h3>
+        <p class="text-xs text-brand-600">Select any service to reserve your appointment online</p>
       </div>
+      <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+         class="text-xs font-semibold text-brand-700 hover:text-brand-900 underline">
+        View Full Square Menu &rarr;
+      </a>
+    </div>
 
-      <!-- Summary Sidebar -->
-      <div class="lg:col-span-1">
-        <div class="sticky top-28 bg-white p-6 rounded-2xl border border-brand-200 shadow-sm space-y-5">
-          <h4 class="font-serif text-lg font-bold border-b border-brand-100 pb-3">Booking Summary</h4>
-          
-          <div class="space-y-3 text-sm">
-            <div class="flex justify-between">
-              <span class="text-brand-600">Service:</span>
-              <span class="font-semibold text-right" id="summary-service">None selected</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-brand-600">Estimated Price:</span>
-              <span class="font-semibold" id="summary-price">-</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-brand-600">Duration:</span>
-              <span class="font-semibold" id="summary-duration">-</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-brand-600">Stylist:</span>
-              <span class="font-semibold">Janelle Zander</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-brand-600">Location:</span>
-              <span class="font-semibold text-right">All Smoke & Mirrors (NJ)</span>
-            </div>
-          </div>
+    <!-- Category: Cuts & Styling -->
+    <div class="mb-10">
+      <h4 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-4">Haircuts & Styling</h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-          <div class="pt-4 border-t border-brand-100">
-            <button onclick="confirmAppointment()"
-                    class="w-full py-3.5 bg-brand-900 hover:bg-brand-700 text-white rounded-xl text-sm font-semibold transition shadow-md">
-              Complete Appointment
-            </button>
-            <p class="text-[11px] text-center text-brand-600 mt-2">Free booking • Direct Google Calendar sync</p>
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Blowout</h5>
+            <p class="text-xs text-brand-600">Shampoo and round brush volume finish</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$40</span>
           </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
         </div>
-      </div>
 
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Women’s Cut</h5>
+            <p class="text-xs text-brand-600">Precision cut, wash, and style</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$55</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Formal Updos</h5>
+            <p class="text-xs text-brand-600">Special events, weddings, and formal styling</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$85</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Men’s Cut</h5>
+            <p class="text-xs text-brand-600">Clean tailored cut and style</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$36</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Kids Cut</h5>
+            <p class="text-xs text-brand-600">Tailored haircut for children</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$35</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Category: Color & Chemical Services -->
+    <div class="mb-10">
+      <h4 class="text-xs font-bold uppercase tracking-widest text-brand-600 mb-4">Color & Treatments</h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Custom Balayage</h5>
+            <p class="text-xs text-brand-600">Hand-painted dimensional seamless gradient</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$175+</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Full Highlights</h5>
+            <p class="text-xs text-brand-600">Full head blonding, foil placement, and tone</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$200+</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Partial Highlights</h5>
+            <p class="text-xs text-brand-600">Face framing and crown lightening</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">$150+</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-brand-100 flex items-center justify-between">
+          <div>
+            <h5 class="font-semibold text-brand-900">Keratin Treatment</h5>
+            <p class="text-xs text-brand-600">Intense frizz reduction, smooth silky shine</p>
+            <span class="text-sm font-bold text-brand-900 block mt-1">Consultation</span>
+          </div>
+          <a href="https://hair-with-janelle-zander.square.site/" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-semibold rounded-xl transition">
+            Book
+          </a>
+        </div>
+
+      </div>
     </div>
   </main>
 
-  <!-- Confirmation Modal -->
-  <div id="confirm-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-8 border border-brand-200 shadow-xl space-y-6">
-      <div class="text-center space-y-2">
-        <div class="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto text-xl font-bold">✓</div>
-        <h3 class="font-serif text-2xl font-bold">Appointment Requested!</h3>
-        <p class="text-xs text-brand-700">Janelle will hold this spot on her calendar.</p>
-      </div>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-brand-200 py-8 text-center text-xs text-brand-600 space-y-2">
+    <p class="font-semibold text-brand-900">All Smoke and Mirrors Hair Studio</p>
+    <p>South Jersey, NJ • Direct inquiries: <a href="mailto:jzhairbooking@gmail.com" class="underline">jzhairbooking@gmail.com</a></p>
+    <p class="text-[11px] text-brand-500 pt-2">Powered by Square Appointments</p>
+  </footer>
 
-      <div class="bg-brand-50 p-4 rounded-xl border border-brand-100 text-sm space-y-2" id="modal-details">
-        <!-- Details injected via JS -->
-      </div>
-
-      <div class="space-y-3">
-        <a id="gcal-link" target="_blank" rel="noopener noreferrer"
-           class="block w-full text-center py-3 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-xl text-sm font-semibold transition">
-          📅 Add to Google Calendar
-        </a>
-        <button onclick="downloadICS()"
-                class="w-full py-3 border border-brand-200 hover:bg-brand-50 text-brand-900 rounded-xl text-sm font-semibold transition">
-          📥 Download .ics Calendar File
-        </button>
-        <button onclick="closeModal()"
-                class="w-full py-2 text-xs text-brand-600 hover:text-brand-900 underline text-center">
-          Back to website
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const services = [
-      { name: "Blowout", price: 40, duration: 45, desc: "Shampoo, blowout, and signature volume styling" },
-      { name: "Women's Cut", price: 55, duration: 60, desc: "Precision haircut and style" },
-      { name: "Updos", price: 85, duration: 60, desc: "Special event, prom, or formal styling" },
-      { name: "Men's Cut", price: 36, duration: 30, desc: "Classic cut & style" },
-      { name: "Kids Cut", price: 35, duration: 30, desc: "Gentle haircut for kids" },
-      { name: "Partial Highlights", price: 150, duration: 120, desc: "Dimensional foil work for crown and sides (+)" },
-      { name: "Full Highlights", price: 200, duration: 150, desc: "Full head blonding and toner (+)" },
-      { name: "Balayage", price: 175, duration: 150, desc: "Hand-painted dimensional seamless gradient (+)" },
-      { name: "Keratin Treatment", price: 250, duration: 150, desc: "Smoothing, frizz reduction, and shine treatment" },
-      { name: "Color Correction", price: 200, duration: 180, desc: "Dark-to-light, tone correction, or custom blend" }
-    ];
-
-    let currentSelected = services[0];
-    let bookedData = null;
-
-    function renderServices() {
-      const container = document.getElementById('service-list');
-      container.innerHTML = services.map((s, idx) => `
-        <label class="flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition ${currentSelected.name === s.name ? 'border-brand-900 bg-brand-50' : 'border-brand-100 hover:bg-brand-50/50'}">
-          <div class="flex items-center gap-3">
-            <input type="radio" name="service" ${currentSelected.name === s.name ? 'checked' : ''} onchange="selectService(${idx})" class="accent-brand-900" />
-            <div>
-              <p class="text-sm font-semibold text-brand-900">${s.name}</p>
-              <p class="text-xs text-brand-600">${s.desc}</p>
-            </div>
-          </div>
-          <div class="text-right pl-3">
-            <span class="text-sm font-bold text-brand-900">$${s.price}${s.desc.includes('+') ? '+' : ''}</span>
-            <span class="block text-[11px] text-brand-600">${s.duration} min</span>
-          </div>
-        </label>
-      `).join('');
-      updateSummary();
-    }
-
-    function selectService(index) {
-      currentSelected = services[index];
-      renderServices();
-    }
-
-    function selectServiceDirect(name, price, duration) {
-      currentSelected = services.find(s => s.name === name) || { name, price, duration, desc: '' };
-      renderServices();
-      document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function updateSummary() {
-      document.getElementById('summary-service').innerText = currentSelected.name;
-      document.getElementById('summary-price').innerText = `$${currentSelected.price}${currentSelected.desc.includes('+') ? '+' : ''}`;
-      document.getElementById('summary-duration').innerText = `${currentSelected.duration} mins`;
-    }
-
-    function renderSlots() {
-      const dateVal = document.getElementById('booking-date').value;
-      const select = document.getElementById('time-slot');
-      if (!dateVal) {
-        select.innerHTML = '<option value="">Select a date first</option>';
-        return;
-      }
-      const slots = ['9:00 AM', '10:00 AM', '11:15 AM', '1:00 PM', '2:15 PM', '3:30 PM', '4:45 PM'];
-      select.innerHTML = slots.map(t => `<option value="${t}">${t}</option>`).join('');
-    }
-
-    function confirmAppointment() {
-      const date = document.getElementById('booking-date').value;
-      const time = document.getElementById('time-slot').value;
-      const name = document.getElementById('client-name').value.trim();
-      const phone = document.getElementById('client-phone').value.trim();
-      const email = document.getElementById('client-email').value.trim();
-      const notes = document.getElementById('client-notes').value.trim();
-
-      if (!date || !time) {
-        alert('Please choose a valid date and time slot.');
-        return;
-      }
-      if (!name || !phone) {
-        alert('Please provide your name and phone number so Janelle can reach you.');
-        return;
-      }
-
-      bookedData = { service: currentSelected, date, time, name, phone, email, notes };
-
-      document.getElementById('modal-details').innerHTML = `
-        <p><strong>Service:</strong> ${bookedData.service.name} ($${bookedData.service.price})</p>
-        <p><strong>When:</strong> ${bookedData.date} at ${bookedData.time}</p>
-        <p><strong>Stylist:</strong> Janelle Zander (@jzhairstudio)</p>
-        <p><strong>Client:</strong> ${bookedData.name} (${bookedData.phone})</p>
-      `;
-
-      const gcalUrl = buildGoogleCalendarUrl(bookedData);
-      document.getElementById('gcal-link').setAttribute('href', gcalUrl);
-      document.getElementById('confirm-modal').classList.remove('hidden');
-    }
-
-    function buildGoogleCalendarUrl(data) {
-      const title = encodeURIComponent(`${data.service.name} with Janelle Zander`);
-      const details = encodeURIComponent(`Hair Appointment for ${data.name}\nPhone: ${data.phone}\nNotes: ${data.notes || 'None'}\nStylist: Janelle Zander (jzhairbooking@gmail.com)`);
-      const location = encodeURIComponent('All Smoke and Mirrors Hair Studio, South Jersey, NJ');
-
-      const startDateTime = new Date(`${data.date} ${data.time}`).toISOString().replace(/-|:|\.\d\d\d/g, "");
-      const endDateTime = new Date(new Date(`${data.date} ${data.time}`).getTime() + data.service.duration * 60000).toISOString().replace(/-|:|\.\d\d\d/g, "");
-
-      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateTime}/${endDateTime}&details=${details}&location=${location}&add=jzhairbooking@gmail.com`;
-    }
-
-    function downloadICS() {
-      if (!bookedData) return;
-      const startIso = new Date(`${bookedData.date} ${bookedData.time}`).toISOString().replace(/-|:|\.\d\d\d/g, "").slice(0, 15) + "Z";
-      const endIso = new Date(new Date(`${bookedData.date} ${bookedData.time}`).getTime() + bookedData.service.duration * 60000).toISOString().replace(/-|:|\.\d\d\d/g, "").slice(0, 15) + "Z";
-
-      const icsData = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "BEGIN:VEVENT",
-        `SUMMARY:${bookedData.service.name} - Janelle Zander`,
-        `DESCRIPTION:Hair Appointment with Janelle Zander\\nClient: ${bookedData.name}\\nPhone: ${bookedData.phone}`,
-        `LOCATION:All Smoke and Mirrors Hair Studio, South Jersey, NJ`,
-        `DTSTART:${startIso}`,
-        `DTEND:${endIso}`,
-        "STATUS:CONFIRMED",
-        "END:VEVENT",
-        "END:VCALENDAR"
-      ].join("\n");
-
-      const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8;" });
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute("download", `Appointment-${bookedData.service.name.replace(/\s+/g, '-')}.ics`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function closeModal() {
-      document.getElementById('confirm-modal').classList.add('hidden');
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      document.getElementById('booking-date').value = tomorrow.toISOString().split('T')[0];
-      renderServices();
-      renderSlots();
-    });
-  </script>
 </body>
 </html>
